@@ -1,0 +1,73 @@
+//Creating the Orchards table
+
+Create table orchards (
+id SERIAL NOT NUll primary key,
+
+      crob TEXT NOT NULL,
+        feddans INTEGER NOT NULL,
+       mm INTEGER NOT NULL,
+       pest_state TEXT NOT NULL
+      u_id INTEGER NOT NULL
+      Foreign key(u_id) REFERENCES users(id)
+	
+)
+
+/////////////////////////////////
+//Creating the users table 
+
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    password CHAR(64) NOT NULL,
+    UNIQUE (username)
+);
+
+/////////////////////////////////
+//Inserting users
+
+INSERT INTO users (username, password) VALUES ('ahmed', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f');
+INSERT INTO users (username, password) VALUES ('abdelrhman', '9b7f22b30459715983e6c446da5242d83fb4b44ecf61282b78b1fa8639e78a71');
+INSERT INTO users (username, password) VALUES ('mohsen', '63cb946beb677e9f8d28ec5a8c6f6a929eb5b7dddc4b286f86345813c2d58e5a');
+INSERT INTO users (username, password) VALUES ('ahmed', 'b96482290a873ee9875236c0b4455988a10a7ec28bba60419d449429d0ced0e0');
+
+/////////////////////////////////
+//Original users passwords(Before hashing)
+12345678
+Let's_Go
+gogogo
+carrot
+
+/////////////////////////////////
+//Inserting Orchards
+
+INSERT INTO orchards (crob, feddans,mm,pest_state,u_id) VALUES ('carrot', 12,40,'Minimal',3);
+INSERT INTO orchards (crob, feddans,mm,pest_state,u_id) VALUES ('potato', 12,30,'Minimal',3);
+INSERT INTO orchards (crob, feddans,mm,pest_state,u_id) VALUES ('apple', 12,40,'Minimal',3);
+INSERT INTO orchards (crob, feddans,mm,pest_state,u_id) VALUES ('mango', 12,40,'Minimal',2);
+INSERT INTO orchards (crob, feddans,mm,pest_state,u_id) VALUES ('apple', 12,40,'Minimal',1);
+
+/////////////////////////////////
+//Connecting to the local host in app
+
+final conn = await Connection.open(
+      Endpoint(
+        host: 'localhost',
+        database: 'farm_orchard_management_dashboard',
+        username: 'postgres',
+        password: '12345678',
+      ),
+      settings: ConnectionSettings(sslMode: SslMode.disable),
+    );
+
+/////////////////////////////////
+//User retrieval from the app
+
+final result = await conn.execute(
+        'SELECT username,password,id FROM users where username = \'$username\'',
+      );
+
+/////////////////////////////////
+//Orchards retrieval from app
+
+final result =
+        await conn.execute('SELECT * FROM orchards where u_id = $u_id');
