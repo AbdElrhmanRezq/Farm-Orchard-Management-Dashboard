@@ -40,9 +40,9 @@ carrot
 /////////////////////////////////
 //Inserting Orchards
 
-INSERT INTO orchards (crob, feddans,mm,pest_state,u_id) VALUES ('carrot', 12,40,'Minimal',3);
-INSERT INTO orchards (crob, feddans,mm,pest_state,u_id) VALUES ('potato', 12,30,'Minimal',3);
-INSERT INTO orchards (crob, feddans,mm,pest_state,u_id) VALUES ('apple', 12,40,'Minimal',3);
+INSERT INTO orchards (crob, feddans,mm,pest_state,u_id) VALUES ('carrot', 12,40,'Minimal',2);
+INSERT INTO orchards (crob, feddans,mm,pest_state,u_id) VALUES ('potato', 12,30,'Minimal',2);
+INSERT INTO orchards (crob, feddans,mm,pest_state,u_id) VALUES ('apple', 12,40,'Minimal',2);
 INSERT INTO orchards (crob, feddans,mm,pest_state,u_id) VALUES ('mango', 12,40,'Minimal',2);
 INSERT INTO orchards (crob, feddans,mm,pest_state,u_id) VALUES ('apple', 12,40,'Minimal',1);
 
